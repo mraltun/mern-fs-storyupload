@@ -3,12 +3,17 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+// Routes
+import storyRoutes from "./routes/stories.js";
+
 const app = express();
 
 // Body parsing middleware.
 app.use(bodyParser.json({ limit: "32mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "32mb", extended: true }));
 app.use(cors());
+
+app.use("/stories", storyRoutes);
 
 const MONGO_URI =
   "mongodb+srv://mraltun:aa12345600@cluster0.btiys.mongodb.net/mernfsstoryuploaddb";
