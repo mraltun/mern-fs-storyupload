@@ -9,10 +9,10 @@ const { Sider, Content } = Layout;
 const Home = () => {
   return (
     <Layout>
-      <Sider width={400}>
+      <Sider style={styles.sider} width={400}>
         <StoryForm />
       </Sider>
-      <Content>
+      <Content style={styles.content}>
         <StoryList />
       </Content>
     </Layout>
