@@ -1,14 +1,15 @@
 import React from "react";
-import { Layout, Image, Typography } from "antd";
-import Logo from "./assets/Logo.png";
 import Home from "./components/Home";
+import Logo from "./assets/Logo.png";
+import { Layout, Image, Typography } from "antd";
+import styles from "./assets/styles/App.styles";
 
 const { Title } = Typography;
 const { Header, Footer } = Layout;
 
 const App = () => {
   return (
-    <Layout>
+    <Layout style={styles.layout}>
       <Header>
         <Image width='45' preview='false' src={Logo} />
         &nbsp;
