@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 // Routes
-import storyRoutes from "./routes/stories.js";
+import storyRoutes from "./routes/storyRoutes.js";
 
 const app = express();
 
