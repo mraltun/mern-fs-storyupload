@@ -1,7 +1,5 @@
-import React from "react";
+import StoryForm from "./StoryForm";
+import { memo } from "react";
 
-const index = () => {
-  return <div>index</div>;
-};
-
-export default index;
+// Higher order component. Only rerender when prop changes, otherwise just use last render
+export default memo(StoryForm);
