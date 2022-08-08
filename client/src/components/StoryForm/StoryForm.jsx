@@ -1,13 +1,19 @@
 import React from "react";
-import { Card, Form, Input, Typography, Button } from "antd";
+import { useDispatch } from "react-redux";
+import { createStory } from "../../actions/StoryAction";
 import FileBase64 from "react-file-base64";
+import { Card, Form, Input, Typography, Button } from "antd";
 import styles from "../../assets/styles/StoryForm.styles";
 
 const { Title } = Typography;
 
 const StoryForm = () => {
   const { form } = Form.useForm;
-  const onSubmit = () => {};
+  const dispatch = useDispatch();
+
+  const onSubmit = (formValues) => {
+    dispatch(createStory(formValues));
+  };
 
   return (
     <Card

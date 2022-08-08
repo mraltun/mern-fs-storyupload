@@ -3,6 +3,10 @@ const storyReducer = (state = [], action) => {
     return action.payload;
   }
 
+  if (action.type === "CREATE_STORY") {
+    return [...state, action.payload];
+  }
+
   return state;
 };
 
