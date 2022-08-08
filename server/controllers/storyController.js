@@ -1,5 +1,5 @@
 // Controllers
 
-export const getStories = async (req, res) => {
+export const getStory = async (req, res) => {
   res.send("Hello");
 };
