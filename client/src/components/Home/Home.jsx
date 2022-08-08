@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import StoryList from "../StoryList";
 import StoryForm from "../StoryForm";
+import styles from "../../assets/styles/Home.styles";
 
 const { Sider, Content } = Layout;
 

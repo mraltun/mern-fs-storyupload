@@ -10,13 +10,13 @@ const { Header, Footer } = Layout;
 const App = () => {
   return (
     <Layout style={styles.layout}>
-      <Header>
-        <Image width='45' preview='false' src={Logo} />
+      <Header style={styles.header}>
+        <Image style={styles.image} width='45' preview='false' src={Logo} />
         &nbsp;
-        <Title>Story Upload App</Title>
+        <Title style={styles.title}>Story Upload App</Title>
       </Header>
       <Home />
-      <Footer>Story Upload App 2022</Footer>
+      <Footer style={styles.footer}>Story Upload App 2022</Footer>
     </Layout>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../assets/styles/StoryForm.styles";
 
 const StoryForm = () => {
   return (
