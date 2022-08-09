@@ -13,6 +13,10 @@ const storyReducer = (state = [], action) => {
     );
   }
 
+  if (action.type === "DELETE_STORY") {
+    return state.filter((story) => story._id !== action.payload);
+  }
+
   return state;
 };
 
