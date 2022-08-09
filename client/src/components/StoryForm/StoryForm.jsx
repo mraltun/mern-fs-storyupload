@@ -8,7 +8,7 @@ import styles from "../../assets/styles/StoryForm.styles";
 const { Title } = Typography;
 
 const StoryForm = () => {
-  const { form } = Form.useForm;
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
 
   const onSubmit = (formValues) => {
@@ -46,7 +46,7 @@ const StoryForm = () => {
             type='file'
             multiple={false}
             onDone={(e) => {
-              form.setFields({ image: e.base64 });
+              form.setFieldsValue({ image: e.base64 });
             }}
           />
         </Form.Item>
