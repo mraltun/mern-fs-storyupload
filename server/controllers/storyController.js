@@ -44,3 +44,22 @@ export const deleteStory = async (req, res) => {
 
   res.json({ message: "Story deleted successfully" });
 };
+
+export const likeStory = async (req, res) => {
+  const { id } = req.params;
+
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).send("This id doesn't belong to any story");
+  }
+
+  const story = await Story.findById(id);
+  const updatedStory = await Story.findByIdAndUpdate(
+    id,
+    {
+      likes: story.likes + 1,
+    },
+    { new: true }
+  );
+
+  res.json(updatedStory);
+};
