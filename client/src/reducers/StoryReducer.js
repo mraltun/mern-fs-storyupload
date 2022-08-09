@@ -7,6 +7,12 @@ const storyReducer = (state = [], action) => {
     return [...state, action.payload];
   }
 
+  if (action.type === "UPDATE_STORY") {
+    return state.map((story) =>
+      story._id === action.payload ? action.payload : story
+    );
+  }
+
   return state;
 };
 

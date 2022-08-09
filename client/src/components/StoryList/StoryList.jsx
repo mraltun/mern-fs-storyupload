@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Row, Col, Spin } from "antd";
 import Story from "../Story";
 
-const StoryList = () => {
+const StoryList = ({ setSelectedId }) => {
   const stories = useSelector((state) => state.stories);
 
   return !stories.length ? (
@@ -15,7 +15,7 @@ const StoryList = () => {
       {stories.map((story) => {
         return (
           <Col key={story._id} lg={24} xl={12} xxl={8}>
-            <Story story={story} />
+            <Story setSelectedId={setSelectedId} story={story} />
           </Col>
         );
       })}

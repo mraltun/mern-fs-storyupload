@@ -1,18 +1,20 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { createStory } from "../../actions/StoryAction";
+import { createStory, updateStory } from "../../actions/StoryAction";
 import FileBase64 from "react-file-base64";
 import { Card, Form, Input, Typography, Button } from "antd";
 import styles from "../../assets/styles/StoryForm.styles";
 
 const { Title } = Typography;
 
-const StoryForm = () => {
+const StoryForm = ({ selectedId, setSelectedId }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
 
   const onSubmit = (formValues) => {
-    dispatch(createStory(formValues));
+    selectedId
+      ? dispatch(updateStory(selectedId, formValues))
+      : dispatch(createStory(formValues));
   };
 
   return (
