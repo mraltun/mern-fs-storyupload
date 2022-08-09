@@ -1,8 +1,13 @@
 import { Router } from "express";
-import { getStory, createStory } from "../controllers/storyController.js";
+import {
+  getStory,
+  createStory,
+  updateStory,
+} from "../controllers/storyController.js";
 const router = Router();
 
 router.get("/", getStory);
 router.post("/", createStory);
+router.patch("/:id", updateStory);
 
 export default router;
