@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import moment from "moment";
-import { deleteStory } from "../../actions/StoryAction";
+import { deleteStory, likeStory } from "../../actions/StoryAction";
 import { Card, Tooltip, Typography, Image } from "antd";
 import { EditOutlined, DeleteTwoTone, HeartTwoTone } from "@ant-design/icons";
 import styles from "../../assets/styles/Story.styles";
@@ -23,7 +23,9 @@ const Story = ({ story, setSelectedId }) => {
             placement='top'
             title='Like'
             color='magenta'
-            onClick={() => {}}
+            onClick={() => {
+              dispatch(likeStory(story));
+            }}
           >
             <HeartTwoTone twoToneColor='magenta' />
             &nbsp; {story.likes} &nbsp;
