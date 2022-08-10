@@ -5,6 +5,7 @@ import {
   UPDATE_STORY,
   DELETE_STORY,
   LIKE_STORY,
+  AUTHENTICATION,
 } from "../constants/actionTypes";
 
 export const getStories = () => async (dispatch) => {
