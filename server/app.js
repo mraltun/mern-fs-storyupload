@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 // Routes
 import storyRoutes from "./routes/storyRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ limit: "32mb", extended: true }));
 app.use(cors());
 
 app.use("/stories", storyRoutes);
+app.use("/user", userRoutes);
 
 const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 5000;
