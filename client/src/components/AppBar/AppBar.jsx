@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import decode from "jwt-decode";
 import { LOGOUT } from "../../constants/actionTypes";
 import { Layout, Image, Typography, Button, Avatar } from "antd";
 import Logo from "../../assets/Logo.png";
@@ -19,14 +20,16 @@ const AppBar = () => {
     const token = user?.token;
 
     if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getDate()) logoutClick();
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
-  const handleClick = () => {
+  const logoutClick = () => {
     dispatch({ type: LOGOUT });
-    navigate("/");
+    navigate("/authform");
     setUser(null);
   };
 
@@ -53,7 +56,7 @@ const AppBar = () => {
           <Title style={styles.title} level={4}>
             {user?.result?.username}
           </Title>
-          <Button onClick={handleClick} htmlType='button'>
+          <Button onClick={logoutClick} htmlType='button'>
             Logout
           </Button>
         </div>
