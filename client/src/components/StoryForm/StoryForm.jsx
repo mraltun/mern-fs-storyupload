@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { createStory, updateStory } from "../../actions/StoryAction";
 import FileBase64 from "react-file-base64";
 import { Card, Form, Input, Typography, Button } from "antd";
@@ -14,10 +15,13 @@ const StoryForm = ({ selectedId, setSelectedId }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
 
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const username = user?.result?.username;
+
   const onSubmit = (formValues) => {
     selectedId
-      ? dispatch(updateStory(selectedId, formValues))
-      : dispatch(createStory(formValues));
+      ? dispatch(updateStory(selectedId, { ...formValues, username }))
+      : dispatch(createStory({ ...formValues, username }));
 
     resetForm();
   };
@@ -32,6 +36,18 @@ const StoryForm = ({ selectedId, setSelectedId }) => {
     form.resetFields();
     setSelectedId();
   };
+
+  if (!user) {
+    return (
+      <Card style={styles.formCard}>
+        <Title level={4}>
+          <span style={styles.formTitle}>Welcome to Story Upload!</span>
+          Please <Link to='/authform'>login</Link> or{" "}
+          <Link to='/authform'>register</Link> for sharing stories and pictures
+        </Title>
+      </Card>
+    );
+  }
 
   return (
     <Card
@@ -50,13 +66,6 @@ const StoryForm = ({ selectedId, setSelectedId }) => {
         size='middle'
         onFinish={onSubmit}
       >
-        <Form.Item
-          name='username'
-          label='Username'
-          rules={[{ required: true }]}
-        >
-          <Input allowClear />
-        </Form.Item>
         <Form.Item name='caption' label='Caption' rules={[{ required: true }]}>
           <Input.TextArea allowClear autoSize={{ minRows: 2, maxRows: 6 }} />
         </Form.Item>
